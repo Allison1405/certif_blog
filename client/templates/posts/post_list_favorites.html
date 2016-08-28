@@ -1,0 +1,11 @@
+<template name="listFavorites">
+  <div class="posts">
+    {{#if favorites}}
+      {{#each favorites}}
+        {{> postItem}}
+      {{/each}}
+    {{else}}
+      <p>You don't have any favorites.</p>
+    {{/if}}
+  </div>
+</template>

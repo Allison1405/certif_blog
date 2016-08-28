@@ -1,0 +1,47 @@
+<template name="postItem">
+  <div class="post" title="{{ shortResume }}">  
+
+
+    <div class="post-content">
+    
+
+      <div class="pull-left">
+        <ul class="list-unstyled">
+          <li><a href="#" class="upvote btn btn-xs {{upvotedClass}}"><span class="glyphicon glyphicon-arrow-up"></span></a></li>
+          <li><a href="#" class="upvote btn btn-xs {{upvotedClass}}"><span class="glyphicon glyphicon-arrow-down"></span></a></li>
+        </ul>
+      </div>
+      <div><h3>
+          <a href="#" class="favorite btn btn-xs {{favoredClass}}"><span class="glyphicon glyphicon-star"></span></a>
+          <a href="{{url}}">{{title}}</a><span>{{domain}}</span></h3>
+      </div>
+      <p>
+        {{pluralize votes "Vote"}},
+        Rédigé par {{author}},
+        <a href="{{pathFor 'postPage'}}">{{pluralize commentsCount "commentaire"}}</a>
+        {{#if ownPost}}<a href="{{pathFor 'postEdit'}}">Edit</a>{{/if}}
+      </p>
+    </div>
+    {{#if isRouteNameIs 'postPage'}}
+    <a href="#anchor_comments" class="pull-right discuss btn btn-default">Commenter</a>
+    <p></p>
+    <div class="clearfix"></div>
+    <div class="post">
+      <div class="post-content">
+        <h3>Resume</h3>
+        <p>{{resume}}</p>
+      </div>
+      <br/>
+      <br/>
+      <br/>
+      <div class="post-content">
+        <h3>Content</h3>
+        {{#markdown}}{{fullText}}{{/markdown}}
+      </div> 
+    </div>
+    {{else}}
+        <a href="{{pathFor 'postPage'}}" class="discuss btn btn-default">Détails</a>
+    {{/if}}    
+
+  </div>
+</template>
